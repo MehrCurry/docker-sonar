@@ -1,10 +1,9 @@
 FROM dockerfile/java
 MAINTAINER Guido Zockoll
 
-RUN apt-get update
-RUN apt-get install -qqy unzip wget mysql-client-5.6
+RUN apt-get update && apt-get install -qqy unzip wget mysql-client-5.6
 
-RUN wget -O /tmp/sonarqube.zip http://dist.sonar.codehaus.org/sonarqube-4.3.zip
+RUN wget -O /tmp/sonarqube.zip http://dist.sonar.codehaus.org/sonarqube-4.3.2.zip
 RUN (cd /opt && unzip /tmp/sonarqube.zip)
 RUN mv /opt/sonarqube* /opt/sonarqube
 
@@ -25,7 +24,7 @@ RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.or
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/scm-activity/sonar-scm-activity-plugin/1.7.1/sonar-scm-activity-plugin-1.7.1.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/sonar-taglist-plugin/1.0/sonar-taglist-plugin-1.0.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/sonar-timeline-plugin/1.3/sonar-timeline-plugin-1.3.jar)
-
+RUN (cd  /opt/sonarqube/extensions/plugins && wget http://docs.codehaus.org/download/attachments/230396085/JavaEcosystem-2.3.zip && unzip JavaEcosystem*.zip)
 EXPOSE 9000
 
 CMD /opt/start.sh
