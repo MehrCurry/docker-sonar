@@ -3,7 +3,7 @@ MAINTAINER Guido Zockoll
 
 RUN apt-get update && apt-get install -qqy unzip wget mysql-client-5.6
 
-RUN wget -O /tmp/sonarqube.zip http://dist.sonar.codehaus.org/sonarqube-4.3.2.zip
+RUN wget -O /tmp/sonarqube.zip http://dist.sonar.codehaus.org/sonarqube-4.4.zip
 RUN (cd /opt && unzip /tmp/sonarqube.zip)
 RUN mv /opt/sonarqube* /opt/sonarqube
 
@@ -25,6 +25,8 @@ RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.or
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/sonar-taglist-plugin/1.0/sonar-taglist-plugin-1.0.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/sonar-timeline-plugin/1.3/sonar-timeline-plugin-1.3.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://docs.codehaus.org/download/attachments/230396085/JavaEcosystem-2.3.zip && unzip JavaEcosystem*.zip)
+RUN (cd  /opt/sonarqube/extensions/plugins && wget http://dist.sonarsource.com/sqale/download/sonar-sqale-plugin-2.3.jar)
+RUN (cd  /opt/sonarqube/extensions/plugins && wget http://dist.sonarsource.com/views/download/sonar-views-plugin-2.5.jar)
 EXPOSE 9000
 
 CMD /opt/start.sh
