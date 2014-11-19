@@ -25,8 +25,6 @@ RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.or
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/sonar-taglist-plugin/1.0/sonar-taglist-plugin-1.0.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/sonar-timeline-plugin/1.3/sonar-timeline-plugin-1.3.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/java/sonar-java-plugin/2.4/sonar-java-plugin-2.4.jar)
-RUN (cd  /opt/sonarqube/extensions/plugins && wget http://dist.sonarsource.com/sqale/download/sonar-sqale-plugin-2.3.jar)
-RUN (cd  /opt/sonarqube/extensions/plugins && wget http://dist.sonarsource.com/views/download/sonar-views-plugin-2.5.jar)
 EXPOSE 9000
 
 CMD /opt/start.sh
