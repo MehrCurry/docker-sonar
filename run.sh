@@ -1,9 +1,19 @@
 #!/bin/bash
 
 #Setup Data Container
-COUNT=$(docker ps -a |grep sonar-data |wc -l)
-if [ $COUNT -eq 0 ]; then
+DATA=$(docker ps -a |grep sonar-data | awk '{print $1}')
+if [ -z "$DATA" ]; then
   docker run -v /var/lib/mysql --name sonar-data busybox true
+fi
+
+SONAR=$(docker ps -a |grep sonar-master | awk '{print $1}')
+if [ -n "$DB" ]; then
+  docker rm -f $SONAR
+fi
+
+DB=$(docker ps -a |grep sonar-db | awk '{print $1}')
+if [ -n "$DB" ]; then
+  docker rm -f $DB
 fi
 
 docker run -d -p 33306:3306 --name sonar-db --restart=always --volumes-from sonar-data -e MYSQL_PASS=123456 tutum/mysql:5.6
