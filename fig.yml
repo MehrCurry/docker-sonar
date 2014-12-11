@@ -1,0 +1,19 @@
+xsonar:
+  build: .
+  links:
+    - db
+  ports: 
+    - 29000:9000
+
+db:
+  image: payone/mysql-5.6
+  environment:
+    - MYSQL_PASS=123456
+  volumes_from:
+    - data
+
+data:
+  image: ubuntu
+  command: /bin/bash -c "while true; do df -h /var/lib/mysql; sleep 60; done"
+  volumes:
+    - /var/lib/mysql
