@@ -25,4 +25,8 @@ RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.or
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/java/sonar-java-plugin/2.6/sonar-java-plugin-2.6.jar)
 EXPOSE 9000
 
+RUN apt-get clean autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}
+
 CMD /opt/start.sh
