@@ -18,6 +18,6 @@ if [ -n "$DB" ]; then
   docker rm -f $DB
 fi
 
-docker run -d -p 33306:3306 --name sonar-db$SUFFIX --restart=always --volumes-from sonar-data$SUFFIX -e MYSQL_PASS=123456 tutum/mysql:5.6
-docker run -d -p 9000:9000 --name sonar-master$SUFFIX --restart=always --link sonar-db$SUFFIX:db gzockoll/sonar:5.0-RC3
+docker run -d -p 33307:3306 --name sonar-db$SUFFIX --restart=always --volumes-from sonar-data$SUFFIX -e MYSQL_PASS=123456 tutum/mysql:5.6
+docker run -d -p 9001:9000 --name sonar-master$SUFFIX --restart=always --link sonar-db$SUFFIX:db gzockoll/sonar:5.0-RC3
 
