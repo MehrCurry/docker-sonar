@@ -22,7 +22,7 @@ RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.or
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/java/sonar-pmd-plugin/2.3/sonar-pmd-plugin-2.3.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/scm-activity/sonar-scm-activity-plugin/1.8/sonar-scm-activity-plugin-1.8.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/sonar-timeline-plugin/1.4/sonar-timeline-plugin-1.4.jar)
-RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/java/sonar-java-plugin/2.6/sonar-java-plugin-2.6.jar)
+RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/java/sonar-java-plugin/2.8/sonar-java-plugin-2.8.jar)
 RUN (cd  /opt/sonarqube/extensions/plugins && wget http://repository.codehaus.org/org/codehaus/sonar-plugins/xml/sonar-xml-plugin/1.2/sonar-xml-plugin-1.2.jar)
 EXPOSE 9000
 
