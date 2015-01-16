@@ -3,7 +3,7 @@ MAINTAINER Guido Zockoll
 
 RUN apt-get update && apt-get install -qqy unzip wget mysql-client-5.6
 
-RUN wget -O /tmp/sonarqube.zip http://dist.sonar.codehaus.org/sonarqube-5.0-RC3.zip
+RUN wget -O /tmp/sonarqube.zip http://dist.sonar.codehaus.org/sonarqube-5.0.zip
 RUN (cd /opt && unzip /tmp/sonarqube.zip)
 RUN mv /opt/sonarqube* /opt/sonarqube
 
