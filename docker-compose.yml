@@ -1,12 +1,12 @@
-xsonar:
-  build: .
+sonar:
+  image: gzockoll/sonar
   links:
     - db
   ports: 
     - 29000:9000
 
 db:
-  image: payone/mysql-5.6
+  image: tutum/mysql-5.6
   environment:
     - MYSQL_PASS=123456
   volumes_from:

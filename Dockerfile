@@ -1,7 +1,5 @@
-FROM java:8
+FROM anapsix/alpine-java:8
 MAINTAINER Guido Zockoll
-
-RUN apt-get update && apt-get install -qqy unzip wget mysql-client
 
 RUN wget -O /tmp/sonarqube.zip https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.4.zip
 RUN (cd /opt && unzip /tmp/sonarqube.zip)
@@ -22,9 +20,5 @@ RUN (cd  /opt/sonarqube/extensions/plugins && wget http://downloads.sonarsource.
 RUN (cd  /opt/sonarqube/extensions/plugins && wget https://sonarsource.bintray.com/Distribution/sonar-scm-svn-plugin/sonar-scm-svn-plugin-1.2.jar)
 
 EXPOSE 9000
-
-RUN apt-get clean autoclean && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/{apt,dpkg,cache,log}
 
 CMD /opt/start.sh
