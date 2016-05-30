@@ -1,7 +1,7 @@
 FROM anapsix/alpine-java:8
 MAINTAINER Guido Zockoll
 
-RUN wget -O /tmp/sonarqube.zip https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.4.zip
+RUN wget -O /tmp/sonarqube.zip https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.6-RC2.zip
 RUN (cd /opt && unzip /tmp/sonarqube.zip)
 RUN mv /opt/sonarqube* /opt/sonarqube
 
@@ -11,10 +11,9 @@ ADD start.sh /opt/start.sh
 RUN chmod +x /opt/start.sh
 
 WORKDIR /opt/sonarqube/extensions/plugins
-RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-jira-plugin/1.2/sonar-jira-plugin-1.2.jar
 RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-motion-chart-plugin/1.7/sonar-motion-chart-plugin-1.7.jar
 RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-timeline-plugin/1.5/sonar-timeline-plugin-1.5.jar
-RUN wget https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-3.13.1.jar
+RUN wget https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-3.14.jar
 RUN wget http://sonarsource.bintray.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-1.4.1.jar
 RUN wget https://bintray.com/artifact/download/stevespringett/owasp/org/sonarsource/owasp/sonar-dependency-check-plugin/1.0.3/sonar-dependency-check-plugin-1.0.3.jar
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-groovy-plugin/sonar-groovy-plugin-1.3.1.jar
