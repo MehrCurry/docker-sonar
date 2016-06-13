@@ -1,7 +1,7 @@
 FROM anapsix/alpine-java:8
 MAINTAINER Guido Zockoll
 
-RUN wget -O /tmp/sonarqube.zip https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.6-RC2.zip
+RUN wget -O /tmp/sonarqube.zip https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.6.zip
 RUN (cd /opt && unzip /tmp/sonarqube.zip)
 RUN mv /opt/sonarqube* /opt/sonarqube
 
@@ -19,7 +19,7 @@ RUN wget https://bintray.com/artifact/download/stevespringett/owasp/org/sonarsou
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-groovy-plugin/sonar-groovy-plugin-1.3.1.jar
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.2.jar
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-scm-svn-plugin/sonar-scm-svn-plugin-1.3.jar
-RUN wget https://github.com/SonarQubeCommunity/sonar-css/releases/download/1.7/sonar-css-plugin.jar
+RUN wget https://github.com/SonarQubeCommunity/sonar-css/releases/download/1.9/sonar-css-plugin.jar
 RUN wget https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-0.9.5/sonar-cxx-plugin-0.9.5.jar
 WORKDIR /opt/sonarqube
 
