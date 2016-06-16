@@ -19,7 +19,7 @@ RUN wget https://bintray.com/artifact/download/stevespringett/owasp/org/sonarsou
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-groovy-plugin/sonar-groovy-plugin-1.3.1.jar
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.2.jar
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-scm-svn-plugin/sonar-scm-svn-plugin-1.3.jar
-RUN wget https://github.com/SonarQubeCommunity/sonar-css/releases/download/1.9/sonar-css-plugin.jar
+RUN wget https://github.com/SonarQubeCommunity/sonar-css/releases/download/1.10/sonar-css-plugin.jar
 RUN wget https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-0.9.5/sonar-cxx-plugin-0.9.5.jar
 WORKDIR /opt/sonarqube
 
