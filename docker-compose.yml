@@ -1,19 +1,26 @@
-sonar:
-  image: gzockoll/sonar
-  links:
-    - db
-  ports: 
-    - 29000:9000
-
-db:
-  image: tutum/mysql-5.6
+sonarqube:
+  image: sonarqube:5.6-alpine
+  ports:
+   - "9000:9000"
+  external_links:
+   - sonar-db:db
   environment:
-    - MYSQL_PASS=123456
+   - SONARQUBE_JDBC_URL=jdbc:mysql://db/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
+   - SONARQUBE_JDBC_USERNAME=admin
+   - SONARQUBE_JDBC_PASSWORD=123456
   volumes_from:
-    - data
+   - plugins
+  restart: always 
 
-data:
-  image: ubuntu
-  command: /bin/bash -c "while true; do df -h /var/lib/mysql; sleep 60; done"
+plugins:
+  image: sonarqube:5.6-alpine
   volumes:
-    - /var/lib/mysql
+   - /opt/sonarqube/extensions
+   - /opt/sonarqube/lib/bundled-plugins
+  command: /bin/true
+
+install_plugins:
+  build: plugins
+  volumes_from:
+   - plugins
+  restart: never
