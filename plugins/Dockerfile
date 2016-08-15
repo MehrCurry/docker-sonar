@@ -15,6 +15,7 @@ RUN wget https://sonarsource.bintray.com/Distribution/sonar-scm-git-plugin/sonar
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-scm-svn-plugin/sonar-scm-svn-plugin-1.3.jar
 RUN wget https://github.com/SonarQubeCommunity/sonar-css/releases/download/1.10/sonar-css-plugin.jar
 RUN wget http://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-2.14.jar
+RUN wget  https://github.com/AmadeusITGroup/sonar-stash/releases/download/1.1.0/sonar-stash-plugin-1.1.0.jar
 VOLUME /opt/sonarqube
 
 # Since we are using a volume which is bound at runtime we need to copy the plugins at runtime to their final location
