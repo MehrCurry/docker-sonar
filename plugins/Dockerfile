@@ -7,7 +7,9 @@ ENV JAVA_VERSION=4.2.1.6971
 ENV JAVASCRIPT_VERSION=2.17
 
 # Download to a temporary location
-WORKDIR /opt/download
+ENV PLUGINS_DIR=/opt/sonarqube/extensions/plugins
+
+WORKDIR $PLUGINS_DIR
 RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-motion-chart-plugin/1.7/sonar-motion-chart-plugin-1.7.jar
 RUN wget http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-timeline-plugin/1.5/sonar-timeline-plugin-1.5.jar
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-$JAVA_VERSION.jar
@@ -19,7 +21,6 @@ RUN wget https://sonarsource.bintray.com/Distribution/sonar-scm-svn-plugin/sonar
 RUN wget https://github.com/SonarQubeCommunity/sonar-css/releases/download/1.10/sonar-css-plugin.jar
 RUN wget http://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-$JAVASCRIPT_VERSION.jar
 RUN wget  https://github.com/AmadeusITGroup/sonar-stash/releases/download/1.2.0-rc1/sonar-stash-plugin-1.2.0-SNAPSHOT.jar
-VOLUME /opt/sonarqube
+VOLUME $PLUGINS_DIR
 
-# Since we are using a volume which is bound at runtime we need to copy the plugins at runtime to their final location
-CMD cp -R /opt/download/* /opt/sonarqube/extensions/plugins
+CMD ls -asl $PLUGINS_DIR
