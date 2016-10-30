@@ -1,26 +1,33 @@
-sonarqube:
-  image: sonarqube:5.6-alpine
-  ports:
-   - "9000:9000"
-  external_links:
-   - sonar-db:db
-  environment:
-   - SONARQUBE_JDBC_URL=jdbc:mysql://db/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
-   - SONARQUBE_JDBC_USERNAME=admin
-   - SONARQUBE_JDBC_PASSWORD=123456
-  volumes_from:
-   - plugins
-  restart: always 
-
-plugins:
-  image: sonarqube:5.6-alpine
-  volumes:
-   - /opt/sonarqube/extensions
-   - /opt/sonarqube/lib/bundled-plugins
-  command: /bin/true
-
-install_plugins:
-  build: plugins
-  volumes_from:
-   - plugins
-  restart: never
+version: '2'
+volumes:
+  sonar-db-data:
+services:
+  sonar-db:
+    image: mysql
+    volumes:
+      - sonar-db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    networks:
+      - build
+  sonarqube:
+    image: sonarqube:alpine
+    links:
+      - sonar-db:db
+    ports:
+      - "19000:9000"
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:mysql://db/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&createDatabaseIfNotExist=true
+      - SONARQUBE_JDBC_USERNAME=root
+      - SONARQUBE_JDBC_PASSWORD=123456
+    volumes_from:
+      - plugins
+    restart: always
+    networks:
+      - build
+  plugins:
+    build: plugins
+    restart: never
+networks:
+  build:
+    driver: bridge    
