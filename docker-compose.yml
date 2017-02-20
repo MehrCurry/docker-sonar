@@ -27,7 +27,6 @@ services:
       - build
   plugins:
     build: plugins
-    restart: never
 networks:
   build:
-    driver: bridge    
+    driver: bridge
